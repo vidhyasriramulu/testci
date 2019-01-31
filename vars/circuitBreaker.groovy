@@ -3,9 +3,15 @@ def terraformWithRollack(message) {
         env.TF_IN_AUTOMATION = true
         sh "terraform ${message}"
         //sh "pwd"
+        if (fileExists("terraform.values")) {
+
+            echo "terraform value file exists"
+
+        }
 
     }
         catch (Exception error ) {
+
             print 'Failure using terraform init.'
             throw error
         }
