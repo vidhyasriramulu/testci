@@ -24,7 +24,7 @@ def terraformWithRollack(message) {
             }
 
 
-            } else {
+             else {
                 echo "Inside exception terraform value file exists"
                 sh "terraform plan -destroy -out destroy.plan"
                 sh "terraform apply destroy.plan"
