@@ -1,5 +1,7 @@
 def terraformWithRollack(message) {
-    "terraform ${message}".execute().text
+    env.TF_IN_AUTOMATION = true
+
+     sh "terraform ${message}"
 }
 
 def warning(message) {
