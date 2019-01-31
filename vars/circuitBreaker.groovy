@@ -12,7 +12,23 @@ def terraformWithRollack(message) {
     }
         catch (Exception error ) {
 
-            print 'Failure using terraform init.'
+            echo "Failure during terraform ${message} "
+            echo "......................Initiating a automatic rollback ......................"
+
+            if (fileExists("terraform.values")) {
+
+                echo "Inside exception terraform value file exists"
+                sh "terraform plan -var-file=terraform.values -destroy -out destroy.plan"
+                sh "terraform apply destroy.plan"
+
+
+            } else {
+                echo "Inside exception terraform value file exists"
+                sh "terraform plan -destroy -out destroy.plan"
+                sh "terraform apply destroy.plan"
+            }
+
+
             throw error
         }
 }
