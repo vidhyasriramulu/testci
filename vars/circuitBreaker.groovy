@@ -1,4 +1,4 @@
-def terraform(message) {
+def terraformWithRollack(message) {
     terraform "${message}"
 }
 
