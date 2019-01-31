@@ -1,5 +1,5 @@
 def info(message) {
-    echo "INFO: ${message}"
+    terraform ${message}
 }
 
 def warning(message) {
