@@ -1,5 +1,5 @@
 def terraformWithRollack(message) {
-    terraform "${message}"
+    "terraform ${message}".execute().text
 }
 
 def warning(message) {
