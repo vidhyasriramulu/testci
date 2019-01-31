@@ -1,5 +1,5 @@
 def terraform(message) {
-    terraform ${message}
+    terraform "${message}"
 }
 
 def warning(message) {
