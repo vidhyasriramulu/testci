@@ -1,14 +1,8 @@
 def terraformWithRollack(message) {
     try {
-        env.TF_IN_AUTOMATION = true
         echo "executing terraform ${message} "
+        env.TF_IN_AUTOMATION = true
         sh "terraform ${message}"
-        //sh "pwd"
-        if (fileExists("terraform.values")) {
-
-            echo "terraform value file exists"
-
-        }
 
     }
         catch (Exception error ) {
@@ -19,7 +13,9 @@ def terraformWithRollack(message) {
             if (fileExists("terraform.values")) {
 
                 echo "Inside exception terraform value file exists"
+                env.TF_IN_AUTOMATION = true
                 sh "terraform plan -var-file=terraform.values -destroy -out destroy.plan"
+                env.TF_IN_AUTOMATION = true
                 sh "terraform apply destroy.plan"
 
 
