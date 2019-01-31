@@ -17,7 +17,7 @@ def terraformWithRollack(message) {
                     env.TF_IN_AUTOMATION = true
                     sh "terraform plan -var-file=terraform.values -destroy -out destroy.plan -auto-approve"
                     env.TF_IN_AUTOMATION = true
-                    sh "terraform apply destroy.plan -auto-approve"
+                    sh "terraform apply destroy.plan "
 
                 }
 
