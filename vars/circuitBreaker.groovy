@@ -1,7 +1,14 @@
 def terraformWithRollack(message) {
-    env.TF_IN_AUTOMATION = true
+    try {
+        env.TF_IN_AUTOMATION = true
+        sh "pwd"
+        sh "terraform ${message}"
 
-     sh "terraform ${message}"
+    }
+        catch (Exception error ) {
+            print 'Failure using terraform init.'
+            throw error
+        }
 }
 
 def warning(message) {
