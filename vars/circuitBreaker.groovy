@@ -2,7 +2,7 @@ def terraformWithRollack(message) {
     try {
         env.TF_IN_AUTOMATION = true
         sh "terraform ${message}"
-        sh "pwd"
+        //sh "pwd"
 
     }
         catch (Exception error ) {
