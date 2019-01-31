@@ -12,11 +12,15 @@ def terraformWithRollack(message) {
 
             if (fileExists("terraform.values")) {
 
+                if (fileExists("terraform.tfstate")) {
+
+                }
                 echo "Inside exception terraform value file exists"
                 env.TF_IN_AUTOMATION = true
-                sh "terraform plan -var-file=terraform.values -destroy -out destroy.plan"
+                sh "terraform plan -var-file=terraform.values -destroy -out destroy.plan -auto-approve"
                 env.TF_IN_AUTOMATION = true
-                sh "terraform apply destroy.plan"
+                sh "terraform apply destroy.plan -auto-approve"
+            }
 
 
             } else {
