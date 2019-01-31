@@ -1,4 +1,4 @@
-def info(message) {
+def terraform(message) {
     terraform ${message}
 }
 
